@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.dao.AlienRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ public class Alien {
     public int id;
     public String name;
     public String tech;
+
 
     public Alien(){
         super();
