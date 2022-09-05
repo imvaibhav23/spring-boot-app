@@ -14,7 +14,7 @@ pipeline {
 
                 echo "+++++++++++++++++ Build +++++++++++++++++++++++++"
                 sh 'mvn -B -Dmaven.test.skip=true clean package'
-                sh 'docker build -t mvnImg'
+
             }
         }
         stage('Deliver') {
@@ -23,6 +23,7 @@ pipeline {
                     }
                     steps {
                         echo "+++++++++++++++++ Deliver ++++++++++++++++++"
+                        sh 'docker build -t mvnImg'
                         sh 'docker rm -f mvnCont || true'
                         sh 'docker run --restart -p 3000:3000 --name mvnCont mvnImg'
                     }
