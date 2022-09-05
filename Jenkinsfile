@@ -21,7 +21,6 @@ pipeline {
                     agent {
                         dockerfile {
                             dir '/var/jenkins_home/workspace/mvnPipeline'
-                            label 'mvnimg'
                         }
                     }
                     steps {
