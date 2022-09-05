@@ -20,14 +20,11 @@ pipeline {
         stage('Deliver') {
                     agent {
                         dockerfile {
-                            dir '/var/jenkins_home/workspace/mvnPipeline'
+                            dir './'
                         }
                     }
                     steps {
                         echo "+++++++++++++++++ Deliver ++++++++++++++++++ "
-                        dir('./var/jenkins_home/workspace/mvnPipeline') {
-                            sh "pwd"
-                        }
                         sh 'pwd'
                         sh 'docker container ls'
                         //sh 'docker build . --file  --tag mvnimg'
