@@ -23,6 +23,7 @@ pipeline {
 //                     }
                     steps {
                         echo "+++++++++++++++++ Deliver ++++++++++++++++++ "
+                        cd '/var/jenkins_home/workspace/mvnPipeline'
                         echo pwd
                         sh 'docker container ls'
 //                         sh 'docker build . --file ./Dockerfile --tag mvnImg'
