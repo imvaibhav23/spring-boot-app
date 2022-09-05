@@ -27,7 +27,7 @@ pipeline {
 //                         sh 'docker container ls'
                         sh 'docker build -t mvnimg ./'
                         sh 'docker rm -f mvncont || true'
-                        sh 'docker run --restart always -p 3000:3000 --name mvncont mvnimg'
+                        sh 'docker run -d --restart always -p 3000:3000 --name mvncont mvnimg'
                     }
         }
     }
