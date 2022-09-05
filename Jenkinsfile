@@ -18,9 +18,9 @@ pipeline {
             }
         }
         stage('Deliver') {
-                    agent {
-                        dockerfile true
-                    }
+//                     agent {
+//                         dockerfile true
+//                     }
                     steps {
                         echo "+++++++++++++++++ Deliver ++++++++++++++++++ "
                         sh 'pwd'
