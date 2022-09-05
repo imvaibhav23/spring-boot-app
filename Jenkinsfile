@@ -18,17 +18,20 @@ pipeline {
             }
         }
         stage('Deliver') {
-//                     agent {
-//                         dockerfile true
-//                     }
+                    agent {
+                        dockerfile {
+                            dir '/var/jenkins_home/workspace/mvnPipeline'
+                            label 'mvnimg'
+                        }
+                    }
                     steps {
                         echo "+++++++++++++++++ Deliver ++++++++++++++++++ "
-//                         dir {
-//                             path:
-//                         }'/var/jenkins_home/workspace/mvnPipeline'
-//                         echo pwd
+                        dir('./var/jenkins_home/workspace/mvnPipeline') {
+                            sh "pwd"
+                        }
+                        sh 'pwd'
                         sh 'docker container ls'
-                        sh 'docker build . --file ./var/jenkins_home/workspace/mvnPipeline/Dockerfile --tag mvnimg'
+                        //sh 'docker build . --file  --tag mvnimg'
                         sh 'docker rm -f mvncont || true'
                         sh 'docker run --restart -p 3000:3000 --name mvncont mvnimg'
                     }
