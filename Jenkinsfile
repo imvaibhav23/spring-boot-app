@@ -19,15 +19,13 @@ pipeline {
         }
         stage('Deliver') {
                     agent {
-                        dockerfile {
-                            dir './'
-                        }
+                        dockerfile true
                     }
                     steps {
                         echo "+++++++++++++++++ Deliver ++++++++++++++++++ "
                         sh 'pwd'
                         sh 'docker container ls'
-                        //sh 'docker build . --file  --tag mvnimg'
+                        sh 'docker build -t mvnimg /'
                         sh 'docker rm -f mvncont || true'
                         sh 'docker run --restart -p 3000:3000 --name mvncont mvnimg'
                     }
