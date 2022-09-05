@@ -8,12 +8,16 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo "+++++++++++++++++ Build +++++++++++++++++++++++++"
                 sh 'mvn -B -DskipTests clean package'
+                sh 'docker build -t mvnImg'
             }
         }
         stage('Deliver') {
                     steps {
-                        sh 'java -jar ./target/demo-0.0.1-SNAPSHOT.jar'
+                        echo "+++++++++++++++++ Deliver ++++++++++++++++++"
+                        sh 'docker rm -f mvnCont || true'
+                        sh 'docker run --restart -p 3000:3000 --name mvnCont mvnImg'
                     }
         }
     }
