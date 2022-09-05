@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
     stages {
         stage('Build') {
             agent {
@@ -23,7 +23,7 @@ pipeline {
                     }
                     steps {
                         echo "+++++++++++++++++ Deliver ++++++++++++++++++"
-                        sh 'docker build -t mvnImg'
+                        sh 'docker build . --file ./Dockerfile --tag mvnImg'
                         sh 'docker rm -f mvnCont || true'
                         sh 'docker run --restart -p 3000:3000 --name mvnCont mvnImg'
                     }
