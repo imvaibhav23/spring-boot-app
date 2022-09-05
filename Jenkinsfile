@@ -28,9 +28,9 @@ pipeline {
 //                         }'/var/jenkins_home/workspace/mvnPipeline'
 //                         echo pwd
                         sh 'docker container ls'
-                        sh 'docker build . --file ./var/jenkins_home/workspace/mvnPipeline/Dockerfile --tag mvnImg'
-                        sh 'docker rm -f mvnCont || true'
-                        sh 'docker run --restart -p 3000:3000 --name mvnCont mvnImg'
+                        sh 'docker build . --file ./var/jenkins_home/workspace/mvnPipeline/Dockerfile --tag mvnimg'
+                        sh 'docker rm -f mvncont || true'
+                        sh 'docker run --restart -p 3000:3000 --name mvncont mvnimg'
                     }
         }
     }
