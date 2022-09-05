@@ -24,8 +24,8 @@ pipeline {
                     steps {
                         echo "+++++++++++++++++ Deliver ++++++++++++++++++ "
                         sh 'pwd'
-                        sh 'docker container ls'
-                        sh 'docker build -t mvnimg /'
+//                         sh 'docker container ls'
+                        sh 'docker build -t mvnimg ./'
                         sh 'docker rm -f mvncont || true'
                         sh 'docker run --restart -p 3000:3000 --name mvncont mvnimg'
                     }
