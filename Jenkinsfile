@@ -23,7 +23,7 @@ pipeline {
 //                     }
                     steps {
                         echo "+++++++++++++++++ Deliver ++++++++++++++++++ "
-                        pwd
+                        echo pwd
                         sh 'docker container ls'
 //                         sh 'docker build . --file ./Dockerfile --tag mvnImg'
                         sh 'docker rm -f mvnCont || true'
